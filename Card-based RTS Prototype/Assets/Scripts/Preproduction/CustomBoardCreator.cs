@@ -46,7 +46,7 @@ public class CustomBoardCreator : MonoBehaviour
 
     public void Save()
     {
-        string filePath = Application.dataPath + "/Resources/Levels";
+        string filePath = Application.dataPath + "/Resources/LevelData";
         if (!Directory.Exists(filePath))
             CreateSaveDirectory();
 
@@ -56,7 +56,7 @@ public class CustomBoardCreator : MonoBehaviour
         foreach (Tile t in tiles.Values)
             board.tiles.Add(new Point(t.pos.x, t.pos.y));
 
-        string fileName = string.Format("Assets/Resources/Levels/{1}.asset", filePath, name);
+        string fileName = string.Format("Assets/Resources/LevelData/{1}.asset", filePath, name);
         AssetDatabase.CreateAsset(board, fileName);
     }
 
@@ -79,7 +79,7 @@ public class CustomBoardCreator : MonoBehaviour
             AssetDatabase.CreateFolder("Assets", "Resources");
         filePath += "/Levels";
         if (!Directory.Exists(filePath))
-            AssetDatabase.CreateFolder("Assets/Resources", "Levels");
+            AssetDatabase.CreateFolder("Assets/Resources", "LevelData");
         AssetDatabase.Refresh();
     }
 
