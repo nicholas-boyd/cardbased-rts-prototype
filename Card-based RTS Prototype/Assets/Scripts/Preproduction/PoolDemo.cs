@@ -18,9 +18,9 @@ public class PoolDemo : MonoBehaviour
     void OnGUI()
     {
         if (GUI.Button(new Rect(10, 10, 100, 30), "Scene 1"))
-            ChangeLevel(0);
-        if (GUI.Button(new Rect(10, 50, 100, 30), "Scene 2"))
             ChangeLevel(1);
+        if (GUI.Button(new Rect(10, 50, 100, 30), "Scene 2"))
+            ChangeLevel(2);
         if (GUI.Button(new Rect(10, 90, 100, 30), "Dequeue"))
         {
             Poolable obj = GameObjectPoolController.Dequeue(PoolKey);
