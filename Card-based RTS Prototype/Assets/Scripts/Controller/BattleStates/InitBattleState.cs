@@ -19,7 +19,7 @@ public class InitBattleState : BattleState
         SpawnTestUnits();
         //owner.battleClockController.Activate();
         yield return null;
-        owner.ChangeState<CombatBattleState>();
+        owner.ChangeState<CutSceneState>();
     }
     void SpawnTestUnits()
     {
