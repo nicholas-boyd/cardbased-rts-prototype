@@ -159,7 +159,7 @@ public class Unit : MonoBehaviour
 
     public void Match()
     {
-        transform.localPosition = new Vector3(tile.center.x, tile.center.y + GetComponent<SpriteRenderer>().bounds.size.y / 2, tile.center.z);
+        transform.localPosition = new Vector3(tile.center.x, GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2 - tile.center.y, tile.center.z);
         transform.localEulerAngles = dir.ToEuler();
     }
 }

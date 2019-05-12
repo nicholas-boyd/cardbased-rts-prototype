@@ -45,7 +45,7 @@ public class CombatBattleState : BattleState
 
     protected override void OnMove(object sender, object args)
     {
-        /*if (canMove)
+        if (canMove)
         {
             Point tilePos = owner.playerUnit.tile.pos + (Point)args;
             List<Tile> tiles = playerUnit.GetComponent<Movement>().GetTilesInRange(board);
@@ -61,7 +61,7 @@ public class CombatBattleState : BattleState
                             canFire = false;
                             SelectTile(tilePos);
                             StartCoroutine("MoveSequence");
-                            hand.RefreshMarkers();
+                            //hand.RefreshMarkers();
                         }
                     }
                     catch (KeyNotFoundException k)
@@ -70,7 +70,7 @@ public class CombatBattleState : BattleState
                     }
                 }
             }
-        }*/
+        }
     }
 
     protected override void OnFire(object sender, object args)
@@ -99,12 +99,12 @@ public class CombatBattleState : BattleState
             RefreshStatPanel(target.tile.pos, 0);
         else
             RefreshStatPanel(target.tile.pos, GetStatPanelIndex(target));
-    }
+    }*/
 
     IEnumerator MoveSequence()
     {
         yield return StartCoroutine(playerUnit.GetComponent<Movement>().Traverse(owner.currentTile));
         canMove = true;
         canFire = true;
-    }*/
+    }
 }

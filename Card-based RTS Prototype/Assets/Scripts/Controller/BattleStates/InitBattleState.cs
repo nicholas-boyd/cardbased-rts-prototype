@@ -54,10 +54,9 @@ public class InitBattleState : BattleState
         }
 
 
-        owner.playerUnit = owner.GetComponentInParent<GameController>().GetComponentInChildren<PlayerController>().player;
+        owner.playerUnit = owner.GetComponentInParent<GameController>().GetComponentInChildren<PlayerController>().player;*/
         owner.playerUnit.Place(board.GetTile(new Point(0, 1)));
-        owner.playerUnit.transform.rotation = Quaternion.Euler(0, 180, 0);
         owner.playerUnit.Match();
-        SelectTile(owner.playerUnit.tile.pos);*/
+        SelectTile(owner.playerUnit.tile.pos);
     }
 }

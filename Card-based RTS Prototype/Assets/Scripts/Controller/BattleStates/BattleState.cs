@@ -11,7 +11,7 @@ public abstract class BattleState : State
     public LevelData levelData { get { return owner.levelData; } }
     public Point pos { get { return owner.pos; } set { owner.pos = value; } }
     //public AbilityHandController abilityHandController { get { return owner.abilityHandController; } }
-    //public Unit playerUnit { get { return owner.playerUnit; } }
+    public Unit playerUnit { get { return owner.playerUnit; } }
     //public List<Unit> enemyUnits { get { return owner.enemyUnits; } }
     //public StatPanelController statPanelController { get { return owner.statPanelController; } }
 
@@ -56,14 +56,14 @@ public abstract class BattleState : State
 
     }
 
-    /*protected virtual Unit GetUnit(Point p)
+    protected virtual Unit GetUnit(Point p)
     {
         Tile t = board.GetTile(p);
         GameObject content = t != null ? t.content : null;
         return content != null ? content.GetComponent<Unit>() : null;
     }
 
-    protected virtual void RefreshStatPanel(Point p, int index)
+    /*protected virtual void RefreshStatPanel(Point p, int index)
     {
         Unit target = GetUnit(p);
         if (target != null)

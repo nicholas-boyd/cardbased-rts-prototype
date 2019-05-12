@@ -8,7 +8,7 @@ public class BattleController : StateMachine {
 	public Board board;
 	public LevelData levelData;
 	public Point pos;
-	//public Unit playerUnit;
+	public Unit playerUnit;
 	public Tile currentTile { get { return board.GetTile(pos); }}
     //public AbilityHandController abilityHandController;
     //public List<Unit> enemyUnits = new List<Unit>();
@@ -25,7 +25,7 @@ public class BattleController : StateMachine {
 
     public void Activate () {
         Debug.Log("Activated");
-        //playerUnit = GetComponentInParent<GameController>().playerController.player;
+        playerUnit = GetComponentInChildren<Unit>();
 		ChangeState<InitBattleState>();
 	}
 

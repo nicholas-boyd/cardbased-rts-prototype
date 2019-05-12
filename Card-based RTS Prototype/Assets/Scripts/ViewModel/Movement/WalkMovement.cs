@@ -5,8 +5,17 @@ using System;
 
 public class WalkMovement : Movement
 {
-
+    const string Idle_Animation = "PlayerIdle";
+    const string Walk_Animation = "PlayerWalking";
     bool acting = false;
+    Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        if (anim == null)
+            Debug.Log("No anim found");
+    }
 
     /*void OnEnable()
     {
@@ -48,8 +57,8 @@ public class WalkMovement : Movement
         if (!acting)
         {
             this.PostNotification(MovementBegunNotification);
-
-            float speed = 1;// gameObject.GetComponentInParent<Stats>()[StatTypes.SPD];
+            anim.Play(Walk_Animation);
+            float speed = .5f;// gameObject.GetComponentInParent<Stats>()[StatTypes.SPD];
             Debug.Log(speed);
             if (speed > 0)
             {
@@ -71,15 +80,15 @@ public class WalkMovement : Movement
                     Directions dir = from.GetDirection(to);
                     if (dir == Directions.West)
                     {
-                        dir = Directions.North;
+                        dir = Directions.South;
                     }
                     else if (dir == Directions.East)
                     {
-                        dir = Directions.South;
+                        dir = Directions.North;
                     }
-                    else if (dir == Directions.North)
+                    else if (dir == Directions.South)
                     {
-                        dir = Directions.South;
+                        dir = Directions.North;
                     }
                     if (unit.dir != dir)
                     {
@@ -87,16 +96,17 @@ public class WalkMovement : Movement
                     }
                     yield return StartCoroutine(Walk(to, speed));
                 }
-                yield return StartCoroutine(Flip(Directions.South));
+                yield return StartCoroutine(Flip(Directions.North));
             }
         }
         this.PostNotification(MovementCompleteNotification);
+        anim.Play(Idle_Animation);
         yield return null;
     }
 
     IEnumerator Walk(Tile target, float speed)
     {
-        Vector3 center = new Vector3(target.center.x, target.center.y + GetComponent<SpriteRenderer>().bounds.size.y / 2, target.center.z);
+        Vector3 center = new Vector3(target.center.x, GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2 - target.center.y, target.center.z);
         Tweener tweener = transform.MoveTo(center, speed, EasingEquations.Linear);
         while (tweener != null)
             yield return null;
